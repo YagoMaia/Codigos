@@ -6,7 +6,7 @@ typedef struct bloco
     int dado;
     struct bloco *esq;
     struct bloco *dir;
-}No;
+} No;
 
 int insereNo(No **raiz, int dado)
 {
@@ -14,34 +14,43 @@ int insereNo(No **raiz, int dado)
     if (*raiz == NULL)
     {
         aux = (No *)malloc(sizeof(No));
-        if (aux == NULL)return 0;
+        if (aux == NULL)
+            return 0;
         aux->esq = aux->dir = NULL;
         aux->dado = dado;
         *raiz = aux;
     }
-    else if (dado < (*raiz)->dado)return insereNo(&(*raiz)->esq, dado);
-    else if (dado > (*raiz)->dado)return insereNo(&(*raiz)->dir, dado);
+    else if (dado < (*raiz)->dado)
+        return insereNo(&(*raiz)->esq, dado);
+    else if (dado > (*raiz)->dado)
+        return insereNo(&(*raiz)->dir, dado);
     return 1;
 }
 
-void imprimiPreOrder(No **raiz){
-    if(*raiz != NULL){
+void imprimiPreOrder(No **raiz)
+{
+    if (*raiz != NULL)
+    {
         printf("%d ", (*raiz)->dado);
         imprimiPreOrder(&(*raiz)->esq);
         imprimiPreOrder(&(*raiz)->dir);
     }
 }
 
-void imprimiPosOrder(No **raiz){
-    if(*raiz != NULL){
+void imprimiPosOrder(No **raiz)
+{
+    if (*raiz != NULL)
+    {
         printf("%d ", (*raiz)->dado);
         imprimiPosOrder(&(*raiz)->dir);
         imprimiPosOrder(&(*raiz)->esq);
     }
 }
 
-void imprimiInOrderC(No **raiz){
-    if(*raiz != NULL){
+void imprimiInOrderC(No **raiz)
+{
+    if (*raiz != NULL)
+    {
         imprimiInOrderC(&(*raiz)->esq);
         printf("%d ", (*raiz)->dado);
         imprimiInOrderC(&(*raiz)->dir);
@@ -58,28 +67,73 @@ void imprimiInOrderD(No **raiz)
     }
 }
 
-int NivelArvore(No **raiz){
-    
-    if(*raiz != NULL){
+int NivelArvore(No **raiz)
+{
+
+    if (*raiz == NULL || ((*raiz)->dir == NULL && (*raiz)->esq == NULL))
+        return 0;
+    else
+    {
         int esq = NivelArvore(&(*raiz)->esq);
         int dir = NivelArvore(&(*raiz)->dir);
-        if(esq > dir) return esq + 1; //HUMMMMMMMM
-        else return dir + 1; // HUMMMMMMM
-    }
-    else return -1;
+        if (esq > dir)
+            return esq + 1; // HUMMMMMMMM
+        else
+            return dir + 1; // HUMMMMMMM
+    };
 }
 
-int NivelElemento(No **raiz, int elemento){
-    
-    if(*raiz != NULL){
-        if((*raiz)->dado != elemento){
-            int esq = NivelArvore(&(*raiz)->esq);
-            int dir = NivelArvore(&(*raiz)->dir);
-            if(esq > dir) return esq + 1; //HUMMMMMMMM
-            else return dir + 1; // HUMMMMMMM
+int busca(No **raiz, int valor)
+{
+    if (*raiz == NULL)
+        return 0;
+    else
+    {
+        if ((*raiz)->dado == valor)
+        {
+            return 1;
+        }
+        else
+        {
+            if (valor < (*raiz)->dado)
+                return busca(&(*raiz)->esq, valor);
+            else
+                return busca(&(*raiz)->dir, valor);
         }
     }
-    else return -1;
+}
+
+No **buscaNo(No **raiz, int valor)
+{
+    if (*raiz == NULL)
+        return NULL;
+    else
+    {
+        if ((*raiz)->dado == valor)
+        {
+            return raiz;
+        }
+        else
+        {
+            if (valor < (*raiz)->dado)
+                return buscaNo(&(*raiz)->esq, valor);
+            else
+                return buscaNo(&(*raiz)->dir, valor);
+        }
+    }
+}
+
+int AlturaSubArvore(No **raiz, int elemento)
+{
+    No **no = buscaNo(raiz, elemento);
+    if (no)
+    {
+        return NivelArvore(raiz);
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 int main()
@@ -102,5 +156,9 @@ int main()
     imprimiInOrderD(&raiz);
     printf("\n");
     printf("%d", NivelArvore(&raiz));
+    printf("\n");
+    printf("%d", busca(&raiz, 3));
+    printf("\n");
+    printf("%d", AlturaSubArvore(&raiz, 1));
     return 0;
 }
