@@ -1,0 +1,204 @@
+[33mcommit 403074695768f1b3a46aaf9bdefa7e440a533c61[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Yago Maia <79180855+YagoMaia@users.noreply.github.com>
+Date:   Tue Apr 18 23:49:08 2023 -0300
+
+    new file:   .vscode/c_cpp_properties.json
+    new file:   .vscode/launch.json
+    new file:   .vscode/settings.json
+    new file:   .vscode/tasks.json
+    new file:   Arvores/exemplo_abb.c
+    new file:   Arvores/insercao.c
+    new file:   Arvores/output/insercao.exe
+    new file:   Lista TDA Simples/.vscode/c_cpp_properties.json
+    new file:   Lista TDA Simples/.vscode/launch.json
+    new file:   Lista TDA Simples/.vscode/settings.json
+    new file:   Lista TDA Simples/.vscode/tasks.json
+    new file:   Lista TDA Simples/Ex01.c
+    new file:   Lista TDA Simples/Ex02.c
+    new file:   Lista TDA Simples/Ex04.c
+    new file:   Lista TDA Simples/Ex05-1.c
+    new file:   Lista TDA Simples/Ex05.c
+    new file:   Lista TDA Simples/Ex06.c
+    new file:   Lista TDA Simples/Ex07.c
+    new file:   Lista TDA Simples/Ex08 copy.c
+    new file:   Lista TDA Simples/amom.c
+    new file:   Lista TDA Simples/gab.c
+    new file:   Lista TDA Simples/gpt.c
+    new file:   Lista TDA Simples/gpt.exe
+    new file:   Lista TDA Simples/lista_dupla_2.c
+    new file:   Lista TDA Simples/lista_dupla_2.exe
+    new file:   Lista TDA Simples/listadupnc.c
+    new file:   Lista TDA Simples/output/gab.exe
+    new file:   Lista TDA Simples/output/gpt.exe
+    new file:   Lista TDA Simples/output/lista_dupla_2.exe
+    new file:   Lista TDA Simples/output/pohaaaa.exe
+    new file:   Lista TDA Simples/output/polinomios_fim.exe
+    new file:   Lista TDA Simples/output/unions.exe
+    new file:   Lista TDA Simples/pohaaaa.c
+    new file:   Lista TDA Simples/polinomios.exe
+    new file:   Lista TDA Simples/polinomios_fim.c
+    new file:   Lista TDA Simples/unions.c
+    new file:   Lista TDA Simples/unions.exe
+    new file:   amom.c
+    new file:   blocos_alocados_dinan.c
+    new file:   blocos_alocados_dinan.exe
+    new file:   build/Debug/amom.o
+    new file:   build/Debug/blocos_alocados_dinan.o
+    new file:   build/Debug/funcao.o
+    new file:   build/Debug/funcoes.o
+    new file:   build/Debug/maior.o
+    new file:   build/Debug/maior2.o
+    new file:   build/Debug/maior3.o
+    new file:   build/Debug/recursividade.o
+    new file:   build/Debug/soma_recursiva.o
+    new file:   central.c
+    new file:   funcao.c
+    new file:   funcao.exe
+    new file:   funcoes.c
+    new file:   funcoes.exe
+    new file:   lokasso.c
+    new file:   maior.c
+    new file:   maior.exe
+    new file:   maior2.c
+    new file:   maior2.exe
+    new file:   maior3.c
+    new file:   maior3.exe
+    new file:   output/blocos_alocados_dinan.exe
+    new file:   output/lokasso.exe
+    new file:   recursividade.c
+    new file:   recursividade.exe
+    new file:   remover_blocos.c
+    new file:   soma_recursiva.c
+    new file:   soma_recursiva.exe
+
+[1mdiff --git a/.vscode/c_cpp_properties.json b/.vscode/c_cpp_properties.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ff92585[m
+[1m--- /dev/null[m
+[1m+++ b/.vscode/c_cpp_properties.json[m
+[36m@@ -0,0 +1,18 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "configurations": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "name": "windows-gcc-x64",[m
+[32m+[m[32m      "includePath": [[m
+[32m+[m[32m        "${workspaceFolder}/**"[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "compilerPath": "C:/TDM-GCC-64/bin/gcc.exe",[m
+[32m+[m[32m      "cStandard": "${default}",[m
+[32m+[m[32m      "cppStandard": "${default}",[m
+[32m+[m[32m      "intelliSenseMode": "windows-gcc-x64",[m
+[32m+[m[32m      "compilerArgs": [[m
+[32m+[m[32m        ""[m
+[32m+[m[32m      ][m
+[32m+[m[32m    }[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "version": 4[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/.vscode/launch.json b/.vscode/launch.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..16a5861[m
+[1m--- /dev/null[m
+[1m+++ b/.vscode/launch.json[m
+[36m@@ -0,0 +1,24 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "version": "0.2.0",[m
+[32m+[m[32m  "configurations": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m      "name": "C/C++ Runner: Debug Session",[m
+[32m+[m[32m      "type": "cppdbg",[m
+[32m+[m[32m      "request": "launch",[m
+[32m+[m[32m      "args": [],[m
+[32m+[m[32m      "stopAtEntry": false,[m
+[32m+[m[32m      "externalConsole": true,[m
+[32m+[m[32m      "cwd": "d:/Engenharia de Sistemas/2º Período/AEDS 2/Códigos",[m
+[32m+[m[32m      "program": "d:/Engenharia de Sistemas/2º Período/AEDS 2/Códigos/build/Debug/outDebug",[m
+[32m+[m[32m      "MIMode": "gdb",[m
+[32m+[m[32m      "miDebuggerPath": "gdb",[m
+[32m+[m[32m      "setupCommands": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "description": "Enable pretty-printing for gdb",[m
+[32m+[m[32m          "text": "-enable-pretty-printing",[m
+[32m+[m[32m          "ignoreFailures": true[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ][m
+[32m+[m[32m    }[m
+[32m+[m[32m  ][m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/.vscode/settings.json b/.vscode/settings.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..bfd7745[m
+[1m--- /dev/null[m
+[1m+++ b/.vscode/settings.json[m
+[36m@@ -0,0 +1,37 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m  "C_Cpp_Runner.cCompilerPath": "gcc",[m
+[32m+[m[32m  "C_Cpp_Runner.cppCompilerPath": "g++",[m
+[32m+[m[32m  "C_Cpp_Runner.debuggerPath": "gdb",[m
+[32m+[m[32m  "C_Cpp_Runner.cStandard": "",[m
+[32m+[m[32m  "C_Cpp_Runner.cppStandard": "",[m
+[32m+[m[32m  "C_Cpp_Runner.msvcBatchPath": "",[m
+[32m+[m[32m  "C_Cpp_Runner.useMsvc": false,[m
+[32m+[m[32m  "C_Cpp_Runner.warnings": [[m
+[32m+[m[32m    "-Wall",[m
+[32m+[m[32m    "-Wextra",[m
+[32m+[m[32m    "-Wpedantic",[m
+[32m+[m[32m    "-Wshadow",[m
+[32m+[m[32m    "-Wformat=2",[m
+[32m+[m[32m    "-Wconversion",[m
+[32m+[m[32m    "-Wnull-dereference",[m
+[32m+[m[32m    "-Wsign-conversion"[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "C_Cpp_Runner.enableWarnings": true,[m
+[32m+[m[32m  "C_Cpp_Runner.warningsAsError": false,[m
+[32m+[m[32m  "C_Cpp_Runner.compilerArgs": [],[m
+[32m+[m[32m  "C_Cpp_Runner.linkerArgs": [],[m
+[32m+[m[32m  "C_Cpp_Runner.includePaths": [],[m
+[32m+[m[32m  "C_Cpp_Runner.includeSearch": [[m
+[32m+[m[32m    "*",[m
+[32m+[m[32m    "**/*"[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "C_Cpp_Runner.excludeSearch": [[m
+[32m+[m[32m    "**/build",[m
+[32m+[m[32m    "**/build/**",[m
+[32m+[m[32m    "**/.*",[m
+[32m+[m[32m    "**/.*/**",[m
+[32m+[m[32m    "**/.vscode",[m
+[32m+[m[32m    "**/.vscode/**"[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  "C_Cpp_Runner.useAddressSanitizer": false[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/.vscode/tasks.json b/.vscode/tasks.json[m
+[1mnew file mode 100644[m
+[1mindex 0000000..76d916e[m
+[1m--- /dev/null[m
+[1m+++ b/.vscode/tasks.json[m
+[36m@@ -0,0 +1,28 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m    "tasks": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m            "type": "cppbuild",[m
+[32m+[m[32m            "label": "C/C++: gcc.exe build active file",[m
+[32m+[m[32m            "command": "C:\\TDM-GCC-64\\bin\\gcc.exe",[m
+[32m+[m[32m            "args": [[m
+[32m+[m[32m                "-fdiagnostics-color=always",[m
+[32m+[m[32m                "-g",[m
+[32m+[m[32m                "${file}",[m
+[32m+[m[32m                "-o",[m
+[32m+[m[32m                "${fileDirname}\\${fileBasenameNoExtension}.exe"[m
+[32m+[m[32m            ],[m
+[32m+[m[32m            "options": {[m
+[32m+[m[32m                "cwd": "${fileDirname}"[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "problemMatcher": [[m
+[32m+[m[32m                "$gcc"[m
+[32m+[m[32m            ],[m
+[32m+[m[32m            "group": {[m
+[32m+[m[32m                "kind": "build",[m
+[32m+[m[32m                "isDefault": true[m
+[32m+[m[32m            },[m
+[32m+[m[32m            "detail": "Task generated by Debugger."[m
+[
