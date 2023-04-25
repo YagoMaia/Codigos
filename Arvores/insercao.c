@@ -126,15 +126,23 @@ No **buscaNo(No **raiz, int valor)
 int AlturaSubArvore(No **raiz, int elemento)
 {
     No **no = buscaNo(raiz, elemento);
-    if (no)
-    {
-        return NivelArvore(raiz);
-    }
+    if (no != NULL)
+        return NivelArvore(no);
     else
-    {
         return -1;
-    }
 }
+
+//void PorAltura(No **raiz)
+//{
+//    if (*raiz != NULL)
+//    {
+//        printf("%d\n", (*raiz)->dado);
+//        printf(" ");
+//        PorAltura(&(*raiz)->esq);
+//        printf(" ");
+//        PorAltura(&(*raiz)->dir);
+//    }
+//}
 
 int main()
 {
@@ -157,8 +165,7 @@ int main()
     printf("\n");
     printf("%d", NivelArvore(&raiz));
     printf("\n");
-    printf("%d", busca(&raiz, 3));
+    printf("%d", AlturaSubArvore(&raiz, 5));
     printf("\n");
-    printf("%d", AlturaSubArvore(&raiz, 1));
     return 0;
 }
