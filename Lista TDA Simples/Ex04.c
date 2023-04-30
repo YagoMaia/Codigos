@@ -8,6 +8,8 @@ typedef struct bloco
     struct bloco *ant;
 } Bloco;
 
+//teste
+
 typedef struct fila
 {
     Bloco *inicio;
