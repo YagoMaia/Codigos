@@ -9,34 +9,51 @@ typedef struct no{
     int fb;
 }No;
 
-int altura(No ** pont_arv){
-    if((*pont_arv)->esq == (*pont_arv)->dir){ // Quer dizer que os dois ponteiros são nulos, logo é um folha;
+int altura(No ** raiz){
+    if((*raiz)->esq == (*raiz)->dir){ // Quer dizer que os dois ponteiros são nulos, logo é um folha;
         return 0;
     }
     else{
-        int esq = altura(&(*pont_arv)->esq);
-        int dir = altura(&(*pont_arv)->dir);
+        int esq = altura(&(*raiz)->esq);
+        int dir = altura(&(*raiz)->dir);
         if(esq > dir) return esq+1;
         else return dir+1;
     }
 }
 
-int insere(No **pont_arv, int valor){ //Mexendo com ponteiro de ponteiros
+int AlturaNo(No *r){
+    if(r == NULL) return -1;
+    return r->altura;
+}
+
+int maior(int dir, int esq){
+    if(dir > esq) return dir + 1;
+    else return esq + 1;
+}
+
+int insere(No **raiz, int valor){ //Mexendo com ponteiro de ponteiros
     No *temp;
-    if(*pont_arv == NULL){ //Analisa se o ponteiro, do tipo nó, que ele está apotando é nulo.
+    if(*raiz == NULL){ //Analisa se o ponteiro, do tipo nó, que ele está apotando é nulo.
         temp = (No*)malloc(sizeof(No));
         if(!temp) return 0;
         temp->valor = valor;
-        temp->altura = temp->fb = 0;
+        temp->fb = 0;
         temp->dir = temp->esq = NULL; 
-        *pont_arv = temp; //O ponteiro que estava com NULL passa a apontar pra temp
+        *raiz = temp; //O ponteiro que estava com NULL passa a apontar pra temp
     }
     else{
-        if(valor < (*pont_arv)->valor) return insere(&(*pont_arv)->esq, valor); //Chamada recursiva passando o ponteiro esquerdo do ponteiro que estava sendo referenciado antes
-        else if(valor > (*pont_arv)->altura) return insere(&(*pont_arv)->dir, valor); //Chamada recursiva passando o ponteiro direito do ponteiro que estava sendo referenciado antes
-        else return -1; // Caso seja um número já existente na arvore;
+        if(valor < (*raiz)->valor){ 
+            if(insere(&(*raiz)->esq, valor)){
+                (*raiz)->fb = AlturaNo((*raiz)->dir) - AlturaNo((*raiz)->esq);
+            }
+        } // Chamada recursiva passando o ponteiro esquerdo do ponteiro que estava sendo referenciado antes
+        else if(valor > (*raiz)->altura){ 
+            if(insere(&(*raiz)->dir, valor)){
+                (*raiz)->fb = AlturaNo((*raiz)->dir) - AlturaNo((*raiz)->esq);
+            }
+        } // Chamada recursiva passando o ponteiro direito do ponteiro que estava sendo referenciado antes
     }
-    (*pont_arv)->altura = altura(pont_arv);
+    (*raiz)->altura = maior(AlturaNo((*raiz)->esq), AlturaNo((*raiz)->dir));
     return 1;
 }
 
@@ -73,6 +90,6 @@ int main(){
     insere(&arvore, 8);
     insere(&arvore, 3);
     insere(&arvore, 5);
-    insere(&arvore, 2);
+    EmOrder(&arvore);
     return 0;
 }
