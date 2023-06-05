@@ -9,18 +9,6 @@ typedef struct no{
     int fb;
 }No;
 
-int altura(No ** raiz){
-    if((*raiz)->esq == (*raiz)->dir){ // Quer dizer que os dois ponteiros são nulos, logo é um folha;
-        return 0;
-    }
-    else{
-        int esq = altura(&(*raiz)->esq);
-        int dir = altura(&(*raiz)->dir);
-        if(esq > dir) return esq+1;
-        else return dir+1;
-    }
-}
-
 int AlturaNo(No *r){
     if(r == NULL) return -1;
     return r->altura;
@@ -31,14 +19,6 @@ int maior(int dir, int esq){
     else return esq + 1;
 }
 
-int rotacao_direita(No **raiz){
-    No *temp1, *temp2;
-    temp1 = (*raiz);
-    raiz = (&(*raiz)->esq);
-    temp2 = (*raiz)->dir;
-    //(&(*raiz)->dir = 
-
-}
 
 int insere(No **raiz, int valor){ //Mexendo com ponteiro de ponteiros
     No *temp;
@@ -109,6 +89,18 @@ int MaiorValor(No **raiz){
     return (*raiz)->valor;
 }
 
+void mostraHierarquia(No *r, int nivel){
+    int n;
+    if(r == NULL) return;
+    for(n = 0; n < nivel ; n++) printf("\t");
+
+    printf("%d\n",r->valor);
+    if(r->esq != NULL)
+    mostraHierarquia(r->esq, nivel + 1);
+    if(r->dir != NULL)
+    mostraHierarquia(r->dir,nivel+1);
+}
+
 int main(){
     No *arvore = NULL;
     insere(&arvore, 10);
@@ -118,6 +110,6 @@ int main(){
     insere(&arvore, 8);
     insere(&arvore, 3);
     insere(&arvore, 5);
-    
+    mostraHierarquia(arvore, 0);
     return 0;
 }
