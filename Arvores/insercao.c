@@ -19,10 +19,8 @@ int insereNo(No **raiz, int dado)
         aux->dado = dado;
         *raiz = aux;
     }
-    else if (dado < (*raiz)->dado)
-        return insereNo(&(*raiz)->esq, dado);
-    else if (dado > (*raiz)->dado)
-        return insereNo(&(*raiz)->dir, dado);
+    else if (dado < (*raiz)->dado) return insereNo(&(*raiz)->esq, dado);
+    else if (dado > (*raiz)->dado) return insereNo(&(*raiz)->dir, dado);
     return 1;
 }
 
