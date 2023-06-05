@@ -31,6 +31,15 @@ int maior(int dir, int esq){
     else return esq + 1;
 }
 
+int rotacao_direita(No **raiz){
+    No *temp1, *temp2;
+    temp1 = (*raiz);
+    raiz = (&(*raiz)->esq);
+    temp2 = (*raiz)->dir;
+    //(&(*raiz)->dir = 
+
+}
+
 int insere(No **raiz, int valor){ //Mexendo com ponteiro de ponteiros
     No *temp;
     if(*raiz == NULL){ //Analisa se o ponteiro, do tipo nó, que ele está apotando é nulo.
@@ -81,6 +90,25 @@ void PosOrder(No **arv){
     }
 }
 
+No **ProcuraMenor(No **raiz){
+    if((*raiz)->esq == NULL) return raiz;
+    else ProcuraMenor(&(*raiz)->esq);
+}
+
+int MenorValor(No **raiz)
+{
+    return (*raiz)->valor;
+}
+
+No ** ProcuraMaior(No **raiz){
+    if((*raiz)->dir == NULL) return raiz;
+    else ProcuraMaior(&(*raiz)->dir);
+}
+
+int MaiorValor(No **raiz){
+    return (*raiz)->valor;
+}
+
 int main(){
     No *arvore = NULL;
     insere(&arvore, 10);
@@ -90,6 +118,6 @@ int main(){
     insere(&arvore, 8);
     insere(&arvore, 3);
     insere(&arvore, 5);
-    EmOrder(&arvore);
+    
     return 0;
 }

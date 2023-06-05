@@ -14,8 +14,7 @@ int insereNo(No **raiz, int dado)
     if (*raiz == NULL)
     {
         aux = (No *)malloc(sizeof(No));
-        if (aux == NULL)
-            return 0;
+        if (aux == NULL)return 0;
         aux->esq = aux->dir = NULL;
         aux->dado = dado;
         *raiz = aux;
