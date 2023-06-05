@@ -105,15 +105,15 @@ int printvalores(No *no)
 {
     if(no->esq != NULL && no->dir != NULL){
         printf("Pai: %d\n", no->valor);
-        printf("Filho Esq: %d\n", no->esq->valor);
-        printf("Filho Dir: %d\n", no->dir->valor);
+        if(no->esq != NULL)printf("Filho Esq: %d\n", no->esq->valor);
+        if(no->dir != NULL)printf("Filho Dir: %d\n", no->dir->valor);
         printf("\n");
     }
     if (no->esq != NULL)printvalores(no->esq);
     if (no->dir != NULL)printvalores(no->dir);
     return 1;
 }
-
+    
 void mostraHierarquia(No *r, int nivel){
     int n;
     if(r == NULL) return;

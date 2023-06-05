@@ -69,8 +69,7 @@ int insere(No **raiz, int valor)
     if (*raiz == NULL)
     { // Analisa se o ponteiro, do tipo nó, que ele está apotando é nulo.
         temp = (No *)malloc(sizeof(No));
-        if (!temp)
-            return 0;
+        if (!temp) return 0;
         temp->valor = valor;
         temp->fb = 0;
         temp->dir = temp->esq = NULL;
@@ -80,8 +79,8 @@ int insere(No **raiz, int valor)
     {
         if (valor < (*raiz)->valor)
         {
-            if (insere(&(*raiz)->esq, valor))
-            { // inserção a esquerda
+            if (insere(&(*raiz)->esq, valor)) // inserção a esquerda
+            { 
                 (*raiz)->fb = AlturaNo((*raiz)->dir) - AlturaNo((*raiz)->esq);
                 if ((*raiz)->fb == -2)
                 {
@@ -91,10 +90,10 @@ int insere(No **raiz, int valor)
                         rotacao_esq_dir(raiz);
                 }
             }
-        } // Chamada recursiva passando o ponteiro esquerdo do ponteiro que estava sendo referenciado antes
+        }
         else if (valor > (*raiz)->altura)
         {
-            if (insere(&(*raiz)->dir, valor))
+            if (insere(&(*raiz)->dir, valor)) //Inserção direita
             {
                 (*raiz)->fb = AlturaNo((*raiz)->dir) - AlturaNo((*raiz)->esq);
                 if ((*raiz)->fb == 2)
@@ -103,7 +102,7 @@ int insere(No **raiz, int valor)
                     else rotacao_dir_esq(raiz);
                 }
             }
-        } // Chamada recursiva passando o ponteiro direito do ponteiro que estava sendo referenciado antes
+        }
     }
     (*raiz)->altura = maior(AlturaNo((*raiz)->esq), AlturaNo((*raiz)->dir));
     return 1;
@@ -141,8 +140,7 @@ void PosOrder(No **arv)
 
 No **ProcuraMenor(No **raiz)
 {
-    if ((*raiz)->esq == NULL)
-        return raiz;
+    if ((*raiz)->esq == NULL) return raiz;
     return ProcuraMenor(&(*raiz)->esq);
 }
 
@@ -153,8 +151,7 @@ int MenorValor(No **raiz)
 
 No **ProcuraMaior(No **raiz)
 {
-    if ((*raiz)->dir == NULL)
-        return raiz;
+    if ((*raiz)->dir == NULL) return raiz;
     return ProcuraMaior(&(*raiz)->dir);
 }
 
@@ -166,23 +163,19 @@ int MaiorValor(No **raiz)
 void mostraHierarquia(No *r, int nivel)
 {
     int n;
-    if (r == NULL)
-        return;
-    for (n = 0; n < nivel; n++)
-        printf("\t");
+    if (r == NULL) return;
+    for (n = 0; n < nivel; n++) printf("\t");
     printf("%d\n", r->valor);
-    if (r->esq != NULL)
-        mostraHierarquia(r->esq, nivel + 1);
-    if (r->dir != NULL)
-        mostraHierarquia(r->dir, nivel + 1);
+    if (r->esq != NULL) mostraHierarquia(r->esq, nivel + 1);
+    if (r->dir != NULL) mostraHierarquia(r->dir, nivel + 1);
 }
 int printvalores(No *no)
 {
-    if (no->esq != NULL && no->dir != NULL)
+    if (no->esq != NULL || no->dir != NULL)
     {
         printf("Pai: %d\n", no->valor);
-        printf("Filho Esq: %d\n", no->esq->valor);
-        printf("Filho Dir: %d\n", no->dir->valor);
+        if(no->esq != NULL) printf("Filho Esq: %d\n", no->esq->valor);
+        if(no->dir != NULL) printf("Filho Dir: %d\n", no->dir->valor);
         printf("\n");
     }
     if (no->esq != NULL)
